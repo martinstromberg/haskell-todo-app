@@ -39,8 +39,7 @@ respondWithHtml status =
 getTodoIndex :: IOTodoList -> Request -> IO Response
 getTodoIndex todoRef req = do
     todos <- liftIO $ readIORef todoRef
-    let r = respondWithHtml status200 $ renderDocument $ todoIndexPage todos
-    return r
+    return $ respondWithHtml status200 $ renderDocument $ todoIndexPage todos
 
 isHtmx :: Request -> Bool
 isHtmx req =
